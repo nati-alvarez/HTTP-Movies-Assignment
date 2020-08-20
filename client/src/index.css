@@ -82,3 +82,25 @@ body {
   color: red;
   text-align: center;
 }
+
+.update-movie {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+  border: 1px solid dimgray;
+  padding: 2vh 4vh;
+}
+
+.update-movie label {
+  display: flex;
+  justify-content: space-between;
+  max-width: 300px;
+  margin: 2vh 0;
+}
+
+.update-movie button {
+  background: green;
+  padding: 1vh;
+  border: none;
+  color: white;
+}
