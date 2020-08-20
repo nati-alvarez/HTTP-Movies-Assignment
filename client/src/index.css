@@ -53,13 +53,17 @@ body {
   width: 75%;
   margin: 1rem auto;
 }
-.save-button, .edit-button {
+.save-button, .edit-button, .delete-button {
   position: absolute;
   top: 25px;
   right: 25px;
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: lightseagreen;
+}
+
+.delete-button {
+  right: 170px
 }
 
 .edit-button {
