@@ -4,7 +4,6 @@ const UpdateForm = props => {
     return (
         <div className="update-movie">
             <form>
-
             </form>
         </div>
     )
