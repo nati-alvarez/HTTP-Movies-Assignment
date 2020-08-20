@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route } from "react-router-dom";
+import { Route, useLocation } from "react-router-dom";
 
 import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
@@ -11,6 +11,8 @@ import axios from 'axios';
 const App = () => {
   const [savedList, setSavedList] = useState([]);
   const [movieList, setMovieList] = useState([]);
+
+  const {pathname} = useLocation();
 
   const getMovieList = () => {
     axios
@@ -24,8 +26,8 @@ const App = () => {
   };
 
   useEffect(() => {
-    getMovieList();
-  }, []);
+    if(pathname === "/") getMovieList();
+  }, [pathname]);
 
   return (
     <>
