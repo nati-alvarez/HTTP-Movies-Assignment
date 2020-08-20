@@ -4,18 +4,34 @@ import axios from "axios";
 
 const UpdateForm = props => {
     const [updateData, setUpdateData] = useState({
+        id: "",
         title: '',
         director: '',
         metascore: null,
+        stars: []
     });
     const {id} = useParams();
+
+    const onChange = e => {
+        setUpdateData({
+            ...updateData,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const onSubmit = e => {
+        e.preventDefault();
+        axios.put(`http://localhost:5000/api/movies/${id}`, updateData).then(({data})=>{
+            console.log(data);
+        }).catch(err=>{
+            console.log(err);
+        });
+    }
 
     useEffect(()=>{
         axios.get(`http://localhost:5000/api/movies/${id}`).then(({data})=>{
             setUpdateData({
-                title: data.title,
-                director: data.director,
-                metascore: data.metascore
+                ...data
             })
         }).catch(err=>{
             console.log(err);
@@ -26,15 +42,15 @@ const UpdateForm = props => {
     return (
         <div className="update-movie">
             <h1>Update Movie</h1>
-            <form>
+            <form onSubmit={onSubmit}>
                 <label htmlFor="title">
-                    Title: <input type="text" name="title" value={updateData.title}/>
+                    Title: <input onChange={onChange} type="text" name="title" value={updateData.title}/>
                 </label>
                 <label htmlFor="title">
-                    Director: <input type="text" name="director" value={updateData.director}/>
+                    Director: <input onChange={onChange} type="text" name="director" value={updateData.director}/>
                 </label>
                 <label htmlFor="title">
-                    Metascore: <input type="text" name="metascore" value={updateData.metascore}/>
+                    Metascore: <input onChange={onChange} type="text" name="metascore" value={updateData.metascore}/>
                 </label>
                 <button>Submit</button>
             </form>
