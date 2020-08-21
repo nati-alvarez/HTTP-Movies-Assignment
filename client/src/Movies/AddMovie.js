@@ -4,14 +4,18 @@ const AddMovie = props => {
     const initialMovieData = {
         title: "",
         director: "",
-        metascore: ""
+        metascore: "",
+        stars: []
     }
     const [newMovie, setNewMovie] = useState(initialMovieData);
 
     const onChange = e => {
+        let value = e.target.value;
+        if(e.target.name === "stars")
+            value = e.target.value.split(",");
         setNewMovie({
             ...newMovie,
-            [e.target.name]: e.target.value
+            [e.target.name]: value
         });
     }
 
@@ -33,6 +37,12 @@ const AddMovie = props => {
                 <label htmlFor="metascore">
                     Metascore: <input onChange={onChange} type="text" maxLength="3" name="metascore"/>
                 </label>
+                <label htmlFor="metascore">
+                    Stars: <input onChange={onChange} type="text" name="stars"/>
+                </label>
+                <div>
+                    <small>*separate actors by a comma</small>
+                </div>
                 <button>Submit</button>
             </form>
         </div>

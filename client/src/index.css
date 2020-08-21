@@ -102,9 +102,24 @@ body {
   margin: 2vh 0;
 }
 
-.update-movie button {
+.update-movie button, .add-movie button {
   background: green;
   padding: 1vh;
   border: none;
   color: white;
+}
+
+.add-movie form {
+  width: 90%;
+  margin: 0 auto;
+  border: 1px solid darkgrey;
+  padding: 2vh;
+}
+
+.add-movie label {
+  display: flex;
+  width: 100%;
+  max-width: 300px;
+  margin: 2vh 0;
+  justify-content: space-between;
 }
