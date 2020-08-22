@@ -15,9 +15,12 @@ const UpdateForm = props => {
     const history = useHistory();
 
     const onChange = e => {
+        let value = e.target.value;
+        if(e.target.name === "stars") value = e.target.value.split(",");
+
         setUpdateData({
             ...updateData,
-            [e.target.name]: e.target.value
+            [e.target.name]: value
         })
     }
 
@@ -41,6 +44,7 @@ const UpdateForm = props => {
         });
     }, []);
 
+    console.log(updateData);
 
     return (
         <div className="update-movie">
@@ -54,6 +58,9 @@ const UpdateForm = props => {
                 </label>
                 <label htmlFor="title">
                     Metascore: <input onChange={onChange} type="text" name="metascore" value={updateData.metascore}/>
+                </label>
+                <label htmlFor="title">
+                    Stars: <input onChange={onChange} type="text" name="stars" value={updateData.stars.join(",")}/>
                 </label>
                 <button>Submit</button>
             </form>
